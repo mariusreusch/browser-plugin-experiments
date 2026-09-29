@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tab Layout Keeper</title>
+    <link rel="stylesheet" href="../shared.css" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Tab Layout Keeper</h1>
+      <button id="manage" class="link">Manage layouts</button>
+    </header>
+
+    <section id="current" class="card">
+      <div class="origin" id="origin">—</div>
+      <p id="summary" class="muted"></p>
+      <div class="actions">
+        <button id="capture" class="primary">Save current arrangement</button>
+        <button id="restore">Restore</button>
+        <button id="edit" class="link">Edit</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>All saved layouts</h2>
+      <ul id="list" class="layout-list"></ul>
+      <p id="empty" class="muted" hidden>Nothing saved yet.</p>
+    </section>
+
+    <p id="status" class="status" role="status"></p>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

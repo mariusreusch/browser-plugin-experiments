@@ -1,0 +1,306 @@
+body {
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar h1 {
+  font-size: 17px;
+}
+
+.topbar-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.button-like {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.button-like:hover {
+  border-color: var(--accent);
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: calc(100vh - 56px);
+}
+
+aside {
+  border-right: 1px solid var(--border);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+aside h2 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.layout-list,
+.display-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.layout-list button {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  padding: 6px 8px;
+  display: grid;
+  gap: 1px;
+}
+
+.layout-list button:hover {
+  background: var(--surface);
+}
+
+.layout-list button[aria-current='true'] {
+  background: var(--surface);
+  box-shadow: inset 3px 0 var(--accent);
+}
+
+.layout-list .sub {
+  font-size: 11px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.display-list li {
+  font-size: 12px;
+  padding: 4px 8px;
+  color: var(--muted);
+}
+
+.add-form {
+  display: flex;
+  gap: 6px;
+}
+
+.add-form input {
+  flex: 1;
+  min-width: 0;
+}
+
+main {
+  padding: 20px;
+  max-width: 980px;
+}
+
+.empty-state {
+  color: var(--muted);
+  padding: 40px 0;
+}
+
+.editor-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.title-input {
+  font-size: 18px;
+  font-weight: 600;
+  border-color: transparent;
+  background: transparent;
+  padding: 2px 4px;
+  margin-left: -4px;
+}
+
+.title-input:hover {
+  border-color: var(--border);
+}
+
+#layout-origin {
+  word-break: break-all;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flags {
+  display: grid;
+  gap: 4px;
+  margin: 16px 0;
+}
+
+.windows {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.window-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.color-bar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: transparent;
+}
+
+.window-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.window-title {
+  font-size: 14px;
+}
+
+.window-actions {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr repeat(4, minmax(70px, 1fr));
+  gap: 8px;
+}
+
+.grid label {
+  display: grid;
+  gap: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.grid input,
+.grid select {
+  width: 100%;
+  min-width: 0;
+}
+
+.hint {
+  margin: -4px 0 0;
+  font-size: 12px;
+}
+
+.color-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.color-options {
+  display: flex;
+  gap: 6px;
+}
+
+.color-options button {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+}
+
+.color-options button[aria-checked='true'] {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.color-options button.none {
+  background:
+    linear-gradient(45deg, transparent 45%, var(--danger) 45%, var(--danger) 55%, transparent 55%),
+    var(--bg);
+}
+
+.tabs {
+  display: grid;
+  gap: 6px;
+}
+
+.tabs-head {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.tabs-head .muted {
+  font-size: 12px;
+}
+
+.tab-list {
+  margin: 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 4px;
+}
+
+.tab-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tab-row input[type='url'] {
+  flex: 1;
+  min-width: 0;
+}
+
+.pin {
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+@media (max-width: 760px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  aside {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tab Layout Keeper</title>
+    <link rel="stylesheet" href="../shared.css" />
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Tab Layout Keeper</h1>
+      <div class="topbar-actions">
+        <button id="export">Export JSON</button>
+        <label class="button-like">
+          Import JSON
+          <input id="import" type="file" accept="application/json,.json" hidden />
+        </label>
+      </div>
+    </header>
+
+    <div class="shell">
+      <aside>
+        <h2>Sites</h2>
+        <ul id="layout-list" class="layout-list"></ul>
+        <form id="add-form" class="add-form">
+          <input id="add-origin" placeholder="https://example.com" aria-label="Origin" required />
+          <button type="submit">Add</button>
+        </form>
+
+        <h2>Connected displays</h2>
+        <ul id="display-list" class="display-list"></ul>
+      </aside>
+
+      <main id="editor">
+        <div id="empty-state" class="empty-state">
+          <p>Select a site on the left, add one by origin, or use <b>Save current arrangement</b> in the toolbar popup.</p>
+        </div>
+
+        <div id="layout-editor" hidden>
+          <div class="editor-head">
+            <div>
+              <input id="layout-name" class="title-input" aria-label="Layout name" />
+              <div id="layout-origin" class="muted"></div>
+            </div>
+            <div class="editor-actions">
+              <span id="save-status" class="status"></span>
+              <button id="recapture">Re-capture from open tabs</button>
+              <button id="restore" class="primary">Restore now</button>
+              <button id="delete" class="danger">Delete</button>
+            </div>
+          </div>
+
+          <div class="flags">
+            <label><input type="checkbox" id="auto-restore" /> Restore automatically when Chrome starts</label>
+            <label><input type="checkbox" id="reuse-tabs" /> Reuse already open tabs with the same URL instead of opening duplicates</label>
+          </div>
+
+          <div id="windows" class="windows"></div>
+          <button id="add-window">+ Add window</button>
+        </div>
+      </main>
+    </div>
+
+    <template id="window-template">
+      <section class="window-card">
+        <div class="window-head">
+          <span class="color-bar"></span>
+          <h3 class="window-title"></h3>
+          <div class="window-actions">
+            <button class="link" data-action="use-current" title="Copy display, position, size and state from the window this page is in">Use this window's position</button>
+            <button class="link" data-action="up" title="Move up">↑</button>
+            <button class="link" data-action="down" title="Move down">↓</button>
+            <button class="link danger" data-action="remove">Remove window</button>
+          </div>
+        </div>
+
+        <div class="grid">
+          <label>Display <select data-field="display"></select></label>
+          <label>State
+            <select data-field="state">
+              <option value="normal">Normal</option>
+              <option value="maximized">Maximized</option>
+              <option value="fullscreen">Fullscreen</option>
+            </select>
+          </label>
+          <label>Left <input type="number" data-field="left" step="1" /></label>
+          <label>Top <input type="number" data-field="top" step="1" /></label>
+          <label>Width <input type="number" data-field="width" min="200" step="1" /></label>
+          <label>Height <input type="number" data-field="height" min="150" step="1" /></label>
+        </div>
+        <p class="hint muted">Position is in pixels relative to the display's usable area (without taskbar / dock). Size and position are clamped to fit the display.</p>
+
+        <div class="color-row">
+          <span>Window color</span>
+          <div class="color-options" role="radiogroup" aria-label="Window color"></div>
+          <input data-field="title" placeholder="Label (optional)" aria-label="Tab group label" />
+        </div>
+
+        <div class="tabs">
+          <div class="tabs-head">
+            <span>Tabs</span>
+            <span class="muted">Pinned tabs are shown first and are never part of the color group.</span>
+          </div>
+          <ol class="tab-list"></ol>
+          <button class="link" data-action="add-tab">+ Add tab</button>
+        </div>
+      </section>
+    </template>
+
+    <template id="tab-template">
+      <li class="tab-row">
+        <input type="url" data-field="url" placeholder="https://example.com/path" aria-label="Tab URL" />
+        <label class="pin"><input type="checkbox" data-field="pinned" /> Pinned</label>
+        <button class="link" data-action="up" title="Move up">↑</button>
+        <button class="link" data-action="down" title="Move down">↓</button>
+        <button class="link danger" data-action="remove" title="Remove tab">✕</button>
+      </li>
+    </template>
+
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

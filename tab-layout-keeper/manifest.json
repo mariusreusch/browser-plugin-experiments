@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Layout Keeper",
+  "version": "1.0.0",
+  "description": "Save and restore where the tabs of a site live on your displays: window position per display, exact URL per tab and a color per window.",
+  "minimum_chrome_version": "116",
+  "permissions": ["tabs", "tabGroups", "storage", "system.display", "contextMenus"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Tab Layout Keeper",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "options_page": "options/options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "restore-layout": {
+      "suggested_key": { "default": "Alt+Shift+R" },
+      "description": "Restore the saved layout of the current site"
+    },
+    "capture-layout": {
+      "suggested_key": { "default": "Alt+Shift+S" },
+      "description": "Save the current layout of the current site"
+    }
+  }
+}
